@@ -41,6 +41,7 @@ public class ejercicio15 {
 			System.out.printf("%d X %d = %d \n", numero1, contador, numero1*contador);
 		}
 		
+		// Acordarse siempre de cerrar el Scanner para evitar perdida de recursos (Resources leak)
 		entrada.close();
 	}
 
