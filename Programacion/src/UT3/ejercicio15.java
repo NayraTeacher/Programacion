@@ -41,7 +41,7 @@ public class ejercicio15 {
 			System.out.printf("%d X %d = %d \n", numero1, contador, numero1*contador);
 		}
 		
-		
+		entrada.close();
 	}
 
 }
