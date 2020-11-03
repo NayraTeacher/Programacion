@@ -34,8 +34,13 @@ public class variables {
 		System.out.println(Integer.parseInt(numero));
 		
 		// Operaciones con variables +, -, *, /, %
-		
-		//System.out.println();
+		System.out.println(numero + numero);//concatenacion de cadenas
+		System.out.println(entero + entero + " aqui concateno enteros.");
+		//entero = 10
+		entero = entero/2;
+		//aqui entero vale 5
+		//Operaciones resto
+		int resto = entero%2; //resto aqui valdria 1
 
 	}
 
