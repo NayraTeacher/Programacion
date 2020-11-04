@@ -1,7 +1,7 @@
 /**
  * 
  */
-package UT3;
+package UT4;
 
 import java.util.Scanner;
 
