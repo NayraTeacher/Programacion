@@ -48,7 +48,7 @@ public class ejercicio21 {
       System.out.printf("Esta es la suma de los numeros introducidos: %5.2f\n", suma); 
       System.out.printf("Esta es la media: %5.2f\n", suma/contador); 
       System.out.printf("Este es el numero menor: %d\n", menor);
-      System.out.printf("Este es el numero mayor: %d\n", menor);
+      System.out.printf("Este es el numero mayor: %d\n", mayor);
       
       entrada.close(); 
 	 

@@ -29,13 +29,12 @@ public class ejercicio63 {
 			enteros[i]=entrada.nextInt();
 		}
 		
+		// 4  6  7  1  0  3  -2  200
+		menor=enteros[0];
+  		mayor=enteros[0];
+		
 		for(int j=0; j<enteros.length; j++) {
 			suma_de_numeros = suma_de_numeros + enteros[j];
-			if (j == 0) {
-	      		menor=enteros[j];
-	      		mayor=enteros[j];
-	      	}
-	      	
 	      	if (enteros[j]<menor)
 	      		menor=enteros[j];
 	      	if (enteros[j]>mayor)
