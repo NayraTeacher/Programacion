@@ -25,19 +25,14 @@ public class dni {
 
         int resto; 
 
-         
-
         System.out.println("Escribe tu numero del DNI y te digo la letra que tiene"); 
 
         dni=sc.nextInt(); 
 
-         
+     
+        resto=dni%23;        
 
-        resto=dni %23; 
-
-         
-
-        System.out.println("La letra de tu DNI es "+letra[resto]); 
+        System.out.println("La letra de tu DNI es " + letra[resto]); 
 
          
 
