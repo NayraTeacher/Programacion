@@ -41,6 +41,12 @@ public class variables {
 		//aqui entero vale 5
 		//Operaciones resto
 		int resto = entero%2; //resto aqui valdria 1
+		// Incrementos y decrementos
+		int x = 3;
+		System.out.println("Equis vale: " + x);
+		System.out.println("Equis++ vale: " + x++);
+		System.out.println("Equis vale: " + x);
+		
 
 	}
 
