@@ -21,44 +21,21 @@ public class ejercicio71 {
 
         //Cargar tabla a con numeros aleatorios             
             fillRandomTable(a);
+          //pintar tabla a  
+            pintaTabla(a);
+            
         //Cargar tabla b con numeros aleatorios          
             fillRandomTable(b);
+            //pintar tabla b 
+            pintaTabla(b);
 
             //Hacer suma (que se mete en tabla c) 
             c=sumaMatrices(a,b);
-
-            //pintar tabla a  
-            System.out.println("\nEste es el primer array"); 
-            for (int i=0; i<a.length; i++) { 
-                for (int j=0; j<a[i].length; j++) { 
-                    System.out.print("P." +i+ "." +j+ "| "); 
-                    System.out.print(a[i][j]+ " \t");                     
-                } 
-                System.out.print("\n"); 
-            } 
-
-            //pintar tabla b 
-            System.out.println("\nEste es el segundo array"); 
-
-            for (int i=0; i<b.length; i++) { 
-                for (int j=0; j<b[i].length; j++) { 
-                    System.out.print("P." +i+ "." +j+ "| "); 
-                    System.out.print(b[i][j]+ " \t"); 
-                } 
-                System.out.print("\n"); 
-            } 
+          //pintar tabla c 
+            pintaTabla(c);
 
             //pintar tabla c (tercer array, la suma) 
-            System.out.println("\nEste es el tercer array (la suma de los dos primeros arrays)"); 
-
-            for (int i=0; i<c.length; i++) { 
-                for (int j=0; j<c[i].length; j++) { 
-                    System.out.print("P." +i+ "." +j+ "| " +a[i][j]+ " + " +b[i][j]+ " = ");  
-                    System.out.print(c[i][j]+ " \t"); 
-                } 
-                System.out.print("\n"); 
-
-            } 
+            pintaTablaSuma(a,b,c);
 
 	}
 	
@@ -81,6 +58,32 @@ public class ejercicio71 {
         } 
 		
 		return suma;
+	}
+	
+	//funcion que pinta en pantalla una tabla o array bidimensional que le pase
+	private static void pintaTabla(int[][] tabla) {
+		System.out.println("\nEsta es una tabla: "); 
+        for (int i=0; i<tabla.length; i++) { 
+            for (int j=0; j<tabla[i].length; j++) { 
+                System.out.print("P." +i+ "." +j+ "| "); 
+                System.out.print(tabla[i][j]+ " \t");                     
+            } 
+            System.out.print("\n"); 
+        }
+	}
+	
+	//funcion que pinta en pantalla una tabla suma de otras dos. Le paso las tres tablas
+	private static void pintaTablaSuma(int[][] sumando1, int[][] sumando2, int[][] suma) {
+		System.out.println("\nEsta es la suma de las dos tablas: "); 
+
+        for (int i=0; i<suma.length; i++) { 
+            for (int j=0; j<suma[i].length; j++) { 
+                System.out.print("P." +i+ "." +j+ "| " +sumando1[i][j]+ " + " +sumando2[i][j]+ " = ");  
+                System.out.print(suma[i][j]+ " \t"); 
+            } 
+            System.out.print("\n"); 
+
+        } 
 	}
 
 }
