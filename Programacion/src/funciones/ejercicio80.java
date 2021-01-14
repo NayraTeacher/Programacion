@@ -25,8 +25,7 @@ public class ejercicio80 {
 		
 		int maxi = maximo(n1,n2); 
 		
-		System.out.println("El maximo es " + maxi);
-		
+		System.out.println("El maximo es " + maxi);		
 		System.out.println("El maximo entre 56 y 78 es " + maximo(56,78));
 		
 		System.out.println("El maximo entre 4,5,6 es " + maximo1(4,5,6));
@@ -59,20 +58,28 @@ public class ejercicio80 {
 
 	//Funcion que devuelve el maximo numero entero de tres numeros que se le pasen
 	private static int maximo1(int num1, int num2, int num3) {
-		int max = num1;
+		int max=0; 
 		
-		
-		
-		return max;
+		if(num1> num2 && num1>num3) 
+			max= num1;
+		if(num2> num1 && num2>num3)
+			max= num2;
+		if(num3> num1 && num3>num2)
+			max= num3; 
+
+		return max; 
 	}
 	
 	//Funcion que devuelve el maximo numero entero de un array de numeros que se le pasen
 	private static int maximo2(int[] numeros) {
-		int max = numeros[0];
-		
-		
-		
-		return max;
+		int mayor=numeros[0]; 
+
+		for(int i=0; i<numeros.length; i++) { 
+			if(numeros[i]>mayor) { 
+				mayor=numeros[i]; 
+			} 
+		} 
+		return mayor; 
 	}
 	
 	//funcion que rellene array con numeros aleatorios, le paso el array
