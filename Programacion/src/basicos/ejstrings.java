@@ -52,6 +52,11 @@ public class ejstrings {
 		letra +=32;
 		System.out.println(letra);
 		
+		String pruebasplit = "Deniz Benitez De todos los santos";
+		String[] arrayapellidos = pruebasplit.split(" ");
+		
+		for (int i=0;i<arrayapellidos.length;i++)
+			System.out.println(arrayapellidos[i]);
 		
 
 	}
