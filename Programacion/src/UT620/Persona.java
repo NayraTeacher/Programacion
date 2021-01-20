@@ -3,6 +3,8 @@
  */
 package UT620;
 
+import java.util.Date;
+
 /**
  * @author Nayra
  * Clase persona con nombre, apellidos edad y saludo
@@ -21,14 +23,14 @@ public class Persona {
 		
 	}
 	
-	//Constructo...
+	//Constructor...
 	public Persona(String nombre, String apellidos, int anio, int mes, int dia, char sexo) {
-		this.nombre = nombre;
-		this.apellidos = apellidos;
-		this.anioNacimiento = anio;
-		this.mesNacimiento = mes;
-		this.diaNacimiento = dia;
-		this.sexo = sexo;
+		setNombre(nombre);
+		setApellidos(apellidos);
+		setAnio(anio);
+		setMes(mes);
+		setDia(dia);
+		setSexo(sexo);
 	}
 
 	//Getters públicos para todos los atributos
@@ -59,7 +61,7 @@ public class Persona {
 	
 	public void setNombre(String nombre) {
 		//Convierto el nombre a palabra con la primera en mayusculas
-		nombre = toUpperPrimeraLetra(nombre);
+		nombre = convertirNombresPropios(nombre);
 		
 		//Si es menor que 4, uso sin especificar
 		if(nombre.length() < 4 )
@@ -69,23 +71,13 @@ public class Persona {
 	}
 	
 	public void setApellidos(String apellidos) {
-		//Convierto los apellidos en un array de strings separandolo por espacios
-		String[] array_apellidos = apellidos.split(" ");
-		
-		//Convierto cada elemento del array de apellidos, en una palabra con la primera en mayusculas
-		for (int i=0;i<array_apellidos.length;i++)
-			array_apellidos[i] = toUpperPrimeraLetra(array_apellidos[i]);
-		
-		//Creo la cadena de apellidos ya formateada concatenando los apellidos del array
-		String apellidos_formateado = "";
-		for (int i=0;i<array_apellidos.length;i++)
-			apellidos_formateado = apellidos_formateado + array_apellidos[i] +" ";
+		apellidos = convertirNombresPropios(apellidos);
 		
 		//Si es menor que 4, uso sin especificar
-		if(apellidos_formateado.length() < 4 )
-			apellidos_formateado="Sin especificar";
+		if(apellidos.length() < 4 )
+			apellidos="Sin especificar";
 		
-		this.apellidos = apellidos_formateado;
+		this.apellidos = apellidos;
 	}
 	
 	public void setAnio(int anio) {
@@ -109,12 +101,49 @@ public class Persona {
 		this.diaNacimiento = dia;
 	}
 	
+	public void setSexo(char sexo) {
+		if (sexo != 'H' || sexo != 'M')
+			sexo = 'X';
+		this.sexo = sexo;
+	}
+	
+	public int getEdad() {
+		int edad = java.time.LocalDate.now().getYear() - this.anioNacimiento;	
+		return edad;
+	}
+	
+	public String mostrarEdad() {
+		return "En la actualidad tengo "+getEdad()+" años. \n";
+	}
+	
+	//TODO cambiar para que no pinte en consola desde la clase Persona
+	public void saludar() {
+		System.out.printf("Hola soy %s %s y naci el %d/%d/%d. \n", nombre, apellidos, diaNacimiento, mesNacimiento, anioNacimiento);
+	}
 	
 	private String toUpperPrimeraLetra(String palabra) {
-		String npropio = palabra;
-		//TODO implementar funcion
-		
+		String npropio = palabra.toLowerCase();
+		String letra=palabra.substring(0,1).toUpperCase();
+		npropio=letra + npropio.substring(1);	
 		return npropio;
 	}
+	
+	private String convertirNombresPropios(String nombrespropios) {
+		//Convierto los apellidos en un array de strings separandolo por espacios
+		String[] array_propios = nombrespropios.split(" ");
+				
+		//Convierto cada elemento del array , en una palabra con la primera en mayusculas
+		for (int i=0;i<array_propios.length;i++)
+			array_propios[i] = toUpperPrimeraLetra(array_propios[i]);
+				
+		//Creo la cadena de apellidos ya formateada concatenando los apellidos del array
+		String nombres_formateado = "";
+		for (int i=0;i<array_propios.length;i++)
+			nombres_formateado = nombres_formateado + array_propios[i] +" ";
+		
+		return nombres_formateado;
+	}
+	
+	
 	
 }
