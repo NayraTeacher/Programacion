@@ -1,5 +1,7 @@
 package UT620;
 
+import UT621.Contador;
+
 public class Actividad20 {
 
 	public static void main(String[] args) {
@@ -19,6 +21,9 @@ public class Actividad20 {
 		
 		Persona invento = new Persona("PEPE", "lopez garcia", 8000, 34, -3, 'G');
 		invento.saludar();
+		
+		Contador c1 = new Contador();
+		
 		
 		
 
