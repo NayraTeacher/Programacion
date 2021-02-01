@@ -5,14 +5,23 @@ package UT621;
 
 /**
  * @author Nayra
- *
+ * Clase que implementa un contador para cronometros
+ * 
  */
 public class Contador {
 	
 	public int cont;
 	
+	/**
+	 * Contructor por defecto o sin parametros
+	 */
 	public Contador() {}
 	
+	
+	/**
+	 * Constructor con parametros.
+	 * @param cont valor inicial del contador.
+	 */
 	public Contador(int cont) {
 		setCont(cont);
 	}
