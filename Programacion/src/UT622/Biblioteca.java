@@ -9,7 +9,7 @@ public class Biblioteca {
 		
 		ArrayList<Libro> catalogo = new ArrayList<Libro>();
 		
-	
+	catalogo.
 
 	}
 

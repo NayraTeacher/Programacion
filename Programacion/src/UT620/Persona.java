@@ -5,6 +5,8 @@ package UT620;
 
 import java.util.Date;
 
+import UT724.Nif;
+
 /**
  * @author Nayra
  * Clase persona con nombre, apellidos edad y saludo
@@ -17,6 +19,7 @@ public class Persona {
 	private int mesNacimiento;
 	private int diaNacimiento;
 	private char sexo;
+	private Nif nif;
 	
 	//Constructor vacio
 	public Persona() {

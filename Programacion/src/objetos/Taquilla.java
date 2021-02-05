@@ -13,6 +13,9 @@ public class Taquilla {
 	private String codSocio;
 	private boolean cerrada;
 	
+	public static boolean CERRADA = true;
+	public static boolean ABIERTA = false;
+	
 	public Taquilla() {	
 	}
 	
