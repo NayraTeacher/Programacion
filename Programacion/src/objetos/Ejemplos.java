@@ -4,7 +4,6 @@
  */
 package objetos;
 
-import javafx.
 /**
  * @author Nayra
  *
@@ -29,11 +28,7 @@ public class Ejemplos {
 		//factorial de 4 es 4! = 4*3*2*1 = 24
 		//factorial de 10 : 10! = 10*9*8*7*6*5*4*3*2*1
 		
-		String path = "C:\\Users\\Nayra\\Downloads\\09 - Mithrandir.mp3";
-		Media media = new Media(new File(path).toURI().toString());
-		MediaPlayer mediaPlayer = new MediaPlayer(media);
-		mediaPlayer.setAutoPlay(true);
-		MediaView mediaView = new MediaView(mediaPlayer);
+
 		
 	}
 

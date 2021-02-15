@@ -10,13 +10,37 @@ package objetos;
 public class Estadistica {
 
 	public static float media(float[] valores) {
-		//TODO
-		return 0;
+		float media = 0;
+		for (float i: valores) {
+			media = media+i;
+		}
+		if (valores.length > 0)
+			media = media/valores.length;
+		
+		return media;
 	}
 	
 	public static float moda(float[] valores) {
-		//TODO
-		return 0;
+		 int maximoNumRepeticiones= 0;
+		    float moda= 0;
+
+		    for(int i=0; i<valores.length; i++)
+		    {
+		        int numRepeticiones= 0;
+		        for(int j=0; j<valores.length; j++)
+		        {
+		            if(valores[i]==valores[j])
+		            {
+		                numRepeticiones++;
+		            }   //fin if
+		            if(numRepeticiones>maximoNumRepeticiones)
+		            {
+		                moda= valores[i];
+		                maximoNumRepeticiones= numRepeticiones;
+		            }   //fin if
+		        }
+		    }   //fin for
+		    return moda;
 	}
 	
 	public static int factorial(int valor) {
@@ -52,7 +76,6 @@ public class Estadistica {
 	/**
 	 * Permutaciones de n elementos (son variaciones de n elementos tomados de n en n, se calculan con el factorial
 	 * @param n
-	 * @param m
 	 * @return
 	 */
 	public static long permutaciones(int n) {
