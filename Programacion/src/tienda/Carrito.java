@@ -32,7 +32,21 @@ public class Carrito {
 	}
 	
 	public void addArticulo(Articulo articulo, int cantidad) {
-		//TODO
+		boolean found = false;
+		//Primero busco el articulo en el pedido. Si lo encuentra
+		for(ArticuloCarrito ac: pedido) {
+			if (ac.elemento.equals(articulo)) {
+				ac.cantidad +=cantidad;
+				found = true;
+			}
+		}
+		
+		if (!found) {
+			ArticuloCarrito nuevo = new ArticuloCarrito(articulo,cantidad);
+			pedido.add(nuevo);
+		}
+			
+		this.total = calculaTotal();
 	}
 	
 }
