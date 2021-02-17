@@ -34,6 +34,7 @@ public class Carrito {
 	public void addArticulo(Articulo articulo, int cantidad) {
 		boolean found = false;
 		//Primero busco el articulo en el pedido. Si lo encuentra
+		//TODO modificarlo por un bucle while, evitar recorrido completo
 		for(ArticuloCarrito ac: pedido) {
 			if (ac.elemento.equals(articulo)) {
 				ac.cantidad +=cantidad;
@@ -49,4 +50,20 @@ public class Carrito {
 		this.total = calculaTotal();
 	}
 	
+	public String mostrarCarrito() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("************ CARRITO **************\n");
+		for(ArticuloCarrito ac: pedido) {
+			sb.append(ac);
+		}
+		
+		sb.append("Total: ").append(this.total);
+		if (confirmado) 
+			sb.append("\nEstado confirmado\n");
+		else
+			sb.append("\nEstado pendiente\n");
+	
+		sb.append("************ CARRITO FIN **********\n");
+		return sb.toString();
+	}
 }

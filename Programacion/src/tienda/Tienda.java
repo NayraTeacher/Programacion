@@ -24,6 +24,8 @@ public class Tienda {
 		ArrayList<Articulo> catalogo = new ArrayList<Articulo>();
 		inicializaCatalogo(catalogo);
 		
+		Carrito cesta = new Carrito();
+		
 		do {
 			System.out.println("Elige una opcion: ");
 			System.out.println("1. Alta Articulo");
@@ -38,7 +40,7 @@ public class Tienda {
 					mostrarCatalogo(catalogo);
 					break;
 				case 2:
-					
+					comprar(catalogo, cesta, cadenas, numeros);
 					break;
 				case 3:
 					break;
@@ -78,9 +80,54 @@ public class Tienda {
 		}
 	}
 
-	private static void comprar() {
-		//
-		//Mostramos catalogo
+	private static Articulo buscarArticuloPorCodigo(ArrayList<Articulo> c, String codigo) {
+		int talla_catalogo = c.size();
+		int i = 0;
+		Articulo a = null;
+		boolean found= false;
+		
+		while(i<talla_catalogo && !(found)) {
+			if (c.get(i).getCodigo().equals(codigo))
+			{
+				a = c.get(i);
+				found=true;
+			}
+			else
+				i++;
+		}
+		
+		return a;
+		
+	}
+
+	private static void comprar(ArrayList<Articulo> c, Carrito carro, Scanner sc, Scanner sn) {
+		int salircomprar = -1;
+		do {
+			//Mostramos catalogo
+			mostrarCatalogo(c);
+			System.out.println("Elige un articulo e introduce su codigo: ");
+			String codigo = sc.nextLine();
+			Articulo a = buscarArticuloPorCodigo(c, codigo);
+			if (a != null) {
+				System.out.println("Indica la cantidad que quieres: ");
+				int cantidad = sn.nextInt();
+				//Si no tengo suficiente hare lo mismo que si no hubiera encontrado el articulo
+				if (a.disponible(cantidad))
+					carro.addArticulo(a, cantidad);
+				else
+					System.out.println("Articulo no disponible, elija otro o revise la cantidad elegida.");
+			}
+			else
+				System.out.println("Articulo no disponible, elija otro o revise la cantidad elegida.");
+			
+			System.out.println(carro.mostrarCarrito());
+			
+			System.out.println("Pulsa 0 si quieres salir de comprar e ir a confirmar. "
+					+ "Cualquier otra tecla para seguir comprando.");
+			salircomprar= sn.nextInt();
+			
+		}while(salircomprar !=0);
+		
 		//Pedimos articulo por codigo, lo buscamos
 		//    si existe Pedimos cantidad
 		//	  	si hay disponibilidad
