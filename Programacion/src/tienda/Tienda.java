@@ -99,6 +99,24 @@ public class Tienda {
 		return a;
 		
 	}
+	
+	private static int buscarPosicionArticuloPorCodigo(ArrayList<Articulo> c, String codigo) {
+		int talla_catalogo = c.size();
+		int i = 0;
+		boolean found= false;
+		
+		while(i<talla_catalogo && !(found)) {
+			if (c.get(i).getCodigo().equals(codigo))
+				found=true;
+			else
+				i++;
+		}
+		if (found)
+			return i;
+		else
+			return -1;
+		
+	}
 
 	private static void comprar(ArrayList<Articulo> c, Carrito carro, Scanner sc, Scanner sn) {
 		int salircomprar = -1;
@@ -137,8 +155,31 @@ public class Tienda {
 		
 	}
 	
-	private static void confirmarCarrito() {
+	private static void modificarStockCatalogo(ArrayList<Articulo> c, Carrito carro) {
+		int pos;
+		for(ArticuloCarrito ac: carro.pedido) {
+			pos = buscarPosicionArticuloPorCodigo(c, ac.elemento.getCodigo());
+			if (pos >-1)
+				c.get(pos).ajustarStock(-1*ac.cantidad);
+		} 
+	}
+	
+	
+	private static void confirmarCarrito(ArrayList<Articulo> c, Carrito carro, Scanner sn) {
 		//Mostramos carrito articulos+cantidades+ el total y estado
+		System.out.println(carro.mostrarCarrito());
+		System.out.println("Pulsa 1 si quieres confirmar la compra del carrito. Cualquier otra tecla para seguir comprando.");
+		int confirmar = sn.nextInt();
+		if(confirmar == 1) {
+			modificarStockCatalogo(c, carro);
+			carro.confirmado = Carrito.CONFIRMADO;
+			System.out.println(carro.mostrarCarrito());
+			mostrarCatalogo(c);
+			System.out.println("Gracias por su compra. Puede continuar comprando.");
+			carro = new Carrito();
+		}
+		else
+			System.out.println("Puede continuar comprando.");
 		//Preguntamos confirmacion
 		// Si se confirma
 		// 		Modificar en el catalogo el stock de los articulos del carrito, restando
